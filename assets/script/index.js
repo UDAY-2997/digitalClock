@@ -26,7 +26,7 @@ function digitalwatch() {
   time.innerHTML = todayTime;
   dateOn.innerHTML = todayDate;
 
-  if (alarmTime === `${hours}:${minutes}`) {
+  if (alarmTime === `${hours}:${minutes} ${amPm}`) {
     alarmAudio.play();
     time.style.color = "red";
   } else {
@@ -40,13 +40,13 @@ document.querySelector(".form").addEventListener("submit", function (event) {
   event.preventDefault();
   const alarmTimeInput = document.querySelector(".alarm-time");
   const alarmTimeDisplay = document.querySelector(".alarm-time-display");
-  const inputRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+  const inputRegex = /^([0-9]|0[0-9]|1[0-2]):[0-5][0-9] ([AaPp][Mm])$/;
   if (inputRegex.test(alarmTimeInput.value)) {
-    alarmTime = alarmTimeInput.value;
+    alarmTime = alarmTimeInput.value.toUpperCase();
     alarmTimeDisplay.textContent = alarmTime;
     alarmTimeInput.value = "";
   } else {
-    alert("Please enter a valid time in HH:MM format.");
+    alert("Please enter a valid time in HH:MM AM/PM format.");
     alarmTimeInput.value = "";
   }
 });
