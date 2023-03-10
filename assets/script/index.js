@@ -13,11 +13,14 @@ function digitalwatch() {
   const day = date.getDate().toString().padStart(2, "0");
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getUTCFullYear().toString().padStart(4, "0");
-  const hours = date.getHours().toString().padStart(2, "0");
+  // const hours = date.getHours().toString().padStart(2, "0");
+  let hours = date.getHours();
+  const amPm = hours >= 12 ? "PM" : "AM";
+  hours = (hours % 12 || 12).toString().padStart(2, "0");
   const minutes = date.getMinutes().toString().padStart(2, "0");
   const seconds = date.getSeconds().toString().padStart(2, "0");
 
-  const todayTime = `${hours}:${minutes}:${seconds}`;
+  const todayTime = `${hours}:${minutes}:${seconds} ${amPm}`;
   const todayDate = `${day} / ${month} / ${year}`;
 
   time.innerHTML = todayTime;
