@@ -14,3 +14,15 @@ main {
   align-items: center;
   text-align: center;
 }
+
+.timer {
+  margin-top: 20%;
+}
+
+.time {
+  font-size: 90px;
+}
+
+.date {
+  font-size: 50px;
+}
